@@ -2,7 +2,9 @@ import React from 'react';
 
 const TodoList = props => {
   return (
-    <h2>placeholder</h2>
+    <div className='list-items'>
+      <p>{props.toDoItems.task}</p>
+    </div>
   )
 }
 
