@@ -37,12 +37,12 @@ class App extends React.Component {
       id: Date.now(),
       completed: false
     }
-    this.setState({todos: [...this.state.todos]})
+    this.setState({todos: [...this.state.todos, newTask], todo: ''})
   }
 
-  // toggleComplete() {
-  //
-  // }
+  toggleComplete = event => {
+    
+  }
   //
   // removeItems() {
   //
@@ -51,8 +51,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h2>todo list</h2>
         <TodoList todos={this.state.todos}/> {/*call this attribute anything*/}
-        <TodoForm value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler}/>
+        <TodoForm
+        todos={this.state.todos} value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler}/>
       </div>
     );
   }
