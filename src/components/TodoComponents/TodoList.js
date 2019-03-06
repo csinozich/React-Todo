@@ -1,9 +1,13 @@
 import React from 'react';
+import Todo from './Todo'
 
 const TodoList = props => {
   return (
-    <div className='list-items'>
-      <p>{props.toDoItems.task}</p>
+    <div>
+      {props.todos.map((todo, index) => (
+        <Todo todo={todo}
+        key={index}/> //creating new component out of each todo in the todos array
+      ))}
     </div>
   )
 }

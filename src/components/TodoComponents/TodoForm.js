@@ -1,42 +1,18 @@
 import React from 'react';
 
-const toDoItems = [
-  {
-    task: 'Organize Garage',
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  }
-];
-
-class TodoForm extends React.Component {
-  constructor () {
-    super();
-
-  }
-
+const TodoForm = props => {
   return (
-    <div class='todo-form'>
-      <h1>To-do List</h1>
-      <form>
-        <input
-          name='list-item'
-          value={this.state.task}
-          onChange={this.itemSubmitHandler}
-          />
-        <button type='submit'>Add Item</button>
-      </form>,
-      <div className = 'class-list'>
-        {this.state.toDoItem.map (todoItems => (
-          <TodoForm toDoItems={toDoItems} key={toDoItems.toDoItem} />
-        ))}
-      </div>,
-    </div>
-  );
+    <form>
+      <input
+      name='todo'
+      value={props.value}
+      type='text'
+      onChange={props.inputChangeHandler}
+      placeholder='enter a task'/>
+      <button onClick={this.addTask}>Add Task</button>
+      <button onClick={this.removeItems}>Remove Items</button>
+    </form>
+  )
 }
 
 
