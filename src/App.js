@@ -36,28 +36,37 @@ class App extends React.Component {
       task: this.state.todo,
       id: Date.now(),
       completed: false
-    }
-    this.setState({todos: [...this.state.todos, newTask], todo: ''})
+    };
+    this.setState({todos: [...this.state.todos, newTask], todo: ''},
+    )
   }
 
   toggleComplete = itemId => {
-    this.setState(prevState => {
-      return {
-        todos: prevState.todos.map(todo => {
-          if (todo.id === itemId) {
-            return {
-              name: todo.task,
-              id: todo.id,
-              completed: !todo.completed
-            }
-          }
-          else {return todo}
-        })
+    const todos = this.state.todos.map(todo => {
+      if (todo.id === itemId) {
+        todo.completed = !todo.completed
       }
+      return todo
     })
+    // this.setState(prevState => {
+    //   return {
+    //     todos: prevState.todos.map(todo => {
+    //       if (todo.id === itemId) {
+    //         return {
+    //           name: todo.task,
+    //           id: todo.id,
+    //           completed: !todo.completed
+    //         }
+    //       }
+    //       else {return todo}
+    //     })
+    //   }
+    // })
+    this.setState({todos, todo: ''})
   }
 
-  removeItems = () => {
+  removeItems = event => {
+    event.preventDefault();
     this.setState(prevState => {
       return {
         todos: prevState.todos.filter(todo => {
