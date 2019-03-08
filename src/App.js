@@ -79,7 +79,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>todo list</h2>
+        <h2>to-do list</h2>
         <TodoList todos={this.state.todos} toggleComplete={this.toggleComplete}/> {/*call this attribute anything*/}
         <TodoForm
         todos={this.state.todos} value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler} removeItems={this.removeItems}/>

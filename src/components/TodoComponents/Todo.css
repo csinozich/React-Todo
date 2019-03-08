@@ -6,7 +6,7 @@ body {
 }
 
 h2 {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Ubuntu Condensed', sans-serif;
   text-align: center;
   text-decoration: underline;
 }
@@ -27,15 +27,25 @@ input {
   height: 35px;
   font-size: 14px;
   padding: 0 5px;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 button {
   font-family: 'Barlow', sans-serif;
-  height: 39px;
+  height: 36px;
   width: 90px;
   margin: 0 5px;
+  border: 1px solid black;
+  border-radius: 2px;
+  font-size: 12px;
 }
 
-.task.completed {
+button:hover {
+  background-image: linear-gradient(to bottom right, white, pink);
+}
+
+.todo.true {
   text-decoration: line-through;
+  color: lightgray;
 }
