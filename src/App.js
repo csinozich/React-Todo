@@ -40,8 +40,21 @@ class App extends React.Component {
     this.setState({todos: [...this.state.todos, newTask], todo: ''})
   }
 
-  toggleComplete = event => {
-    
+  toggleComplete = itemId => {
+    this.setState(prevState => {
+      return {
+        todos: prevState.todos.map(todo => {
+          if (todo.id === itemId) {
+            return {
+              name: todo.task,
+              id: todo.id,
+              completed: !todo.completed
+            }
+          }
+          else {return todo}
+        })
+      }
+    })
   }
   //
   // removeItems() {
@@ -52,7 +65,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>todo list</h2>
-        <TodoList todos={this.state.todos}/> {/*call this attribute anything*/}
+        <TodoList todos={this.state.todos} toggleComplete={this.toggleComplete}/> {/*call this attribute anything*/}
         <TodoForm
         todos={this.state.todos} value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler}/>
       </div>

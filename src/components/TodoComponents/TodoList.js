@@ -4,9 +4,10 @@ import Todo from './Todo'
 const TodoList = props => {
   return (
     <div>
-      {props.todos.map((todo, index) => (
+      {props.todos.map((todo, id) => (
         <Todo todo={todo}
-        key={index}/> //creating new component out of each todo in the todos array
+        key={id}
+        toggleComplete={props.toggleComplete}/> //creating new component out of each todo in the todos array
       ))}
     </div>
   )

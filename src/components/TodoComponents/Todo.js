@@ -3,8 +3,14 @@ import './Todo.css'
 
 const Todo = props => {
   return (
-    <p>{props.todo.task}</p>
-  )
+    <div
+      key={props.todo.id}
+      onClick={event => {
+        props.toggleComplete(props.todo.id)
+      }}>
+      <p>{props.todo.task}</p>
+    </div>
+  );
 }
 
 
