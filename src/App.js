@@ -56,10 +56,16 @@ class App extends React.Component {
       }
     })
   }
-  //
-  // removeItems() {
-  //
-  // }
+
+  removeItems = () => {
+    this.setState(prevState => {
+      return {
+        todos: prevState.todos.filter(todo => {
+          return !todo.completed;
+        })
+      };
+    });
+  };
 
   render() {
     return (
@@ -67,7 +73,7 @@ class App extends React.Component {
         <h2>todo list</h2>
         <TodoList todos={this.state.todos} toggleComplete={this.toggleComplete}/> {/*call this attribute anything*/}
         <TodoForm
-        todos={this.state.todos} value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler}/>
+        todos={this.state.todos} value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler} removeItems={this.removeItems}/>
       </div>
     );
   }
