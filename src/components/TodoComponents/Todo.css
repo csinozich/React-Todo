@@ -1,0 +1,41 @@
+body {
+  width: 400px;
+  margin: 0 auto;
+  border: 2px solid black;
+  padding: 20px;
+}
+
+h2 {
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  text-decoration: underline;
+}
+
+p {
+  font-family: 'Barlow', sans-serif;
+  padding-left: 20px;
+}
+
+form {
+  display: flex;
+}
+
+input {
+  font-family: 'Barlow', sans-serif;
+  width: 200px;
+  margin: 0 10px;
+  height: 35px;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+button {
+  font-family: 'Barlow', sans-serif;
+  height: 39px;
+  width: 90px;
+  margin: 0 5px;
+}
+
+.task.completed {
+  text-decoration: line-through;
+}
