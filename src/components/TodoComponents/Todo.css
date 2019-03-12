@@ -49,3 +49,7 @@ button:hover {
   text-decoration: line-through;
   color: lightgray;
 }
+
+.todo:hover {
+  color: pink;
+}
