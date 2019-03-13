@@ -8,7 +8,7 @@ class Pomodoro extends React.Component {
       <div className='pomodoro'>
         <p className='timer'>{this.props.break ? this.props.restMinutes : this.props.workMinutes} : {this.props.seconds < 10 ? `0${this.props.seconds}` : this.props.seconds}</p>
         <div className='timer-buttons'>
-          <button className='timerButton' onClick={this.props.startTimer}>Start</button>
+          <button className='timerButton' onClick={this.props.startTimer}>{this.props.start ? 'Pause' : 'Start'}</button>
         </div>
       </div>
     )
