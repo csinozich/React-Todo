@@ -40,17 +40,16 @@ class App extends React.Component {
 
   addTask = event => {
     event.preventDefault();
+
     let newTask = {
       task: this.state.todo,
       id: Date.now(),
       completed: false
     };
-    this.setState(prevState => {
-      return {
-        todos: [...prevState.todos, newTask],
-        todo: '',
-        }
-      }
+    this.setState({
+      todos: [...this.state.todos, newTask],
+      todo: ""
+    }
     )
   }
 
