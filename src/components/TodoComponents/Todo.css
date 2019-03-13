@@ -45,6 +45,27 @@ button:hover {
   background-image: linear-gradient(to bottom right, white, pink);
 }
 
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.timerButton {
+  margin-bottom: 20px;
+}
+
+.timerButton::after {
+  style: none;
+}
+
+.timer {
+  margin-left: -25px;
+  margin-top: -5px;
+  font-size: 25px;
+}
+
 .todo.true {
   text-decoration: line-through;
   color: lightgray;
