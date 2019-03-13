@@ -45,7 +45,12 @@ class App extends React.Component {
       id: Date.now(),
       completed: false
     };
-    this.setState({todos: [...this.state.todos, newTask], todo: ''},
+    this.setState(prevState => {
+      return {
+        todos: [...prevState.todos, newTask],
+        todo: '',
+        }
+      }
     )
   }
 
