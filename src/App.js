@@ -15,7 +15,7 @@ class App extends React.Component {
       todo: '',
       minutes: 0,
       restMinutes: 5,
-      workMinutes: 20,
+      workMinutes: 25,
       seconds: 0,
       break: false,
       start: false,
@@ -75,10 +75,10 @@ class App extends React.Component {
         this.setState({restMinutes: 5, break: false})
       }
       else {
-        this.setState({workMinutes: this.state.seconds === 0 ? this.state.workMinutes -1 : this.state.workMinutes === 20 ? 19 : this.state.workMinutes})
+        this.setState({workMinutes: this.state.seconds === 0 ? this.state.workMinutes -1 : this.state.workMinutes === 25 ? 24 : this.state.workMinutes})
 
         if (this.state.workMinutes === -1) {
-          this.setState({workMinutes: 20, break: true})
+          this.setState({workMinutes: 25, break: true})
         }
       }
     }
