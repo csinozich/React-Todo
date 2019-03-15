@@ -30,6 +30,7 @@ class App extends React.Component {
       seconds: 0,
       break: false,
       start: false,
+      interval: ''
     }
   }
 
@@ -75,7 +76,6 @@ class App extends React.Component {
   };
 
   timer = () => {
-    if (this.state.start === true) {
       this.setState({seconds: this.state.seconds === 0 ? 59 : this.state.seconds - 1})
 
       if (this.state.break) {
@@ -92,23 +92,63 @@ class App extends React.Component {
           this.setState({workMinutes: 20, break: true})
         }
       }
-      }
-    else {
-      this.setState({
-        interval: clearInterval(this.timer)
-      })
     }
-  }
 
     startTimer = () => {
       this.setState({interval: setInterval(this.timer, 1000), start: !this.state.start});
     }
 
+    pauseTimer = () => {
+      this.setState(prevState => {
+      return {
+        restMinutes: prevState.restMinutes,
+        workMinutes: prevState.workMinutes,
+        seconds: prevState.seconds,
+        break: prevState.break,
+        start: false,
+        interval: clearInterval(prevState.interval)
+      };
+    })
+    }
+
+  // timer = () => {
+  //     this.setState({seconds: this.state.seconds === 0 ? 59 : this.state.seconds - 1})
+  //
+  //     if (this.state.break) {
+  //       this.setState({restMinutes: this.state.seconds === 0 ? this.state.restMinutes-1 : this.state.restMinutes === 5 ? 4 : this.state.restMinutes})
+  //     }
+  //
+  //     if (this.state.restMinutes === -1) {
+  //       this.setState({restMinutes: 5, break: false})
+  //     }
+  //     else {
+  //       this.setState({workMinutes: this.state.seconds === 0 ? this.state.workMinutes -1 : this.state.workMinutes === 20 ? 19 : this.state.workMinutes})
+  //
+  //       if (this.state.workMinutes === -1) {
+  //         this.setState({workMinutes: 20, break: true})
+  //       }
+  //   }
+  // }
+  //
+  //   startTimer = () => {
+  //     this.setState({start: !this.state.start});
+  //     if (this.state.start === true) {
+  //       this.setState({
+  //         interval: setInterval(this.timer, 1000)
+  //       })
+  //     }
+  //     else {
+  //       this.setState({
+  //         interval: clearInterval(this.timer)
+  //       })
+  //     }
+  //   }
+
   render() {
     return (
       <div>
         <h2>to-do list</h2>
-        <Pomodoro startTimer={this.startTimer} timer={this.timer} workMinutes={this.state.workMinutes} seconds={this.state.seconds} restMinutes={this.state.restMinutes} start={this.state.start}/>
+        <Pomodoro startTimer={this.startTimer} pauseTimer={this.pauseTimer} timer={this.timer} workMinutes={this.state.workMinutes} seconds={this.state.seconds} restMinutes={this.state.restMinutes} start={this.state.start}/>
         <TodoList todos={this.state.todos} toggleComplete={this.toggleComplete}/> {/*call this attribute anything*/}
         <TodoForm
         todos={this.state.todos} value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler} removeItems={this.removeItems}/>
