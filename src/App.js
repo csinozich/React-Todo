@@ -180,7 +180,7 @@ class App extends React.Component {
         <TodoList todos={this.state.todos} toggleComplete={this.toggleComplete}/> {/*call this attribute anything*/}
         <TodoForm
         todos={this.state.todos} value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler} removeItems={this.removeItems}/>
-        <a className='collaboration' href='douglasjordan.me'>made in collaboration with douglas jordan </a>
+        <a className='collaboration' href='www.douglasjordan.me'>made in collaboration with douglas jordan </a>
       </div>
     );
   }
