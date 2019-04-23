@@ -23,9 +23,23 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.addLocalStorage();
+    window.addEventListener(
+      "beforeunload",
+      this.saveLocalStorage.bind(this)
+    )
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(
+      "beforeunload",
+      this.saveLocalStorage.bind(this)
+    )
+  }
 
   inputChangeHandler = event => {
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({[event.target.name]: event.target.value});
   }
 
   addTask = event => {
@@ -39,8 +53,7 @@ class App extends React.Component {
     this.setState({
       todos: [...this.state.todos, newTask],
       todo: ""
-    }
-    )
+    });
   }
 
   toggleComplete = itemId => {
@@ -63,6 +76,32 @@ class App extends React.Component {
       };
     });
   };
+
+  addLocalStorage() {
+    // for all items in state
+    for (let key in this.state) {
+      //if the key exists in Local Storage
+      if (localStorage.hasOwnProperty(key)) {
+        //get the key's value from Local Storage
+        let value = localStorage.getItem(key);
+        //parse the Local Storage string and set state
+        try {
+          value = JSON.parse(value);
+          this.setState({[key]: value})
+        }
+        catch(event) {
+          //handle empty string
+          this.setState({[key]: value})
+        }
+      }
+    }
+  }
+
+  saveLocalStorage() {
+    for (let key in this.state) {
+      localStorage.setItem(key, JSON.stringify(this.state[key]))
+    }
+  }
 
   timer = () => {
       this.setState({seconds: this.state.seconds === 0 ? 59 : this.state.seconds - 1})
@@ -141,7 +180,7 @@ class App extends React.Component {
         <TodoList todos={this.state.todos} toggleComplete={this.toggleComplete}/> {/*call this attribute anything*/}
         <TodoForm
         todos={this.state.todos} value={this.state.todo} addTask={this.addTask} inputChangeHandler={this.inputChangeHandler} removeItems={this.removeItems}/>
-        <a className='collaboration' href='https://github.com/douglasjordan2'>made in collaboration with douglas jordan </a>
+        <a className='collaboration' href='douglasjordan.me'>made in collaboration with douglas jordan </a>
       </div>
     );
   }

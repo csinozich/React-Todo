@@ -14,6 +14,10 @@ const Todo = props => {
   );
 }
 
-
+// if props.todo.completed {
+//   return (
+//      <CompletedTask />
+//   )
+// }
 
 export default Todo
